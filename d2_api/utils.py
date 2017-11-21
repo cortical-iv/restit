@@ -21,7 +21,7 @@ from .serializer import SearchPlayerSerializer
 #Set some parameters
 baseurl = 'https://bungie.net/Platform/Destiny2/'
 baseurl_groupv2 = 'https://bungie.net/Platform/GroupV2/'
-D2_KEY = #  <YOUR API KEY HERE>  #
+D2_KEY =  #  <YOUR API KEY HERE>  #
 
 def search_destiny_player_url(user_name):
     """Main point is typically to get the user's id from their username.
