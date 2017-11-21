@@ -2,9 +2,9 @@
 Simple project to illustrate pulling validated data from the RESTful Destiny 2 api into your django project using forms and the django rest framework serializer. Based on the following:    
 https://ultimatedjango.com/blog/how-to-consume-rest-apis-with-django-python-reques/
 
-The project name is `restit`, and the main app is `d2_api`, which implements the business of showing pages for manually and programmatically pulling in data  (in `views.manual` and `views.automatic` views, respectively). For this to work you need an api key from Destiny2, which is contained in `/d2_api/utils.py` as `D2_KEY`.
+The project name is `restit`, and the main app is `d2_api`, which implements the business of showing pages for manually and programmatically pulling in data  (in `views.manual` and `views.automatic`, respectively). For this to work you need an api key from Destiny2, which is contained in `/d2_api/utils.py` as `D2_KEY`.
 
-The home page is an introduction and discussion of the advantages of this approach. The Users page lists the users entered thus far. 
+The home page is an introduction and discussion of the advantages of this approach. The Users page lists the users entered thus far.
 
 Tested on Ubuntu 16.04 using Python 3.6.
 
