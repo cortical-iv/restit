@@ -1,0 +1,16 @@
+{% extends 'd2_api/base.html' %}
+
+{% block content %}
+
+  <h3>Programmatic addition of users</h3>
+  <p>Of course you can have the program do all the wordk, defining a function that collects data from your clan, and then inserts the users into the database.</p>
+
+  <p>To initiate the insertion of clan members from CabalsDeep clan, just click the following button:</p>
+
+  <form action = "{% url 'd2_api:programmatic' %}" method = "POST">
+    {% csrf_token %}
+    <button type = "submit">Add users programmatically</button>
+  </form>
+
+
+{% endblock %}

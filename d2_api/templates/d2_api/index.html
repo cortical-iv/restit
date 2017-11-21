@@ -1,0 +1,33 @@
+{% extends 'd2_api/base.html' %}
+
+{% block content %}
+
+  <h3>Welcome to restit</h3>
+  <p>
+    A simple django project to illustrate how to pull data from the RESTful <a href = "https://github.com/Bungie-net/api">Destiny 2 api</a> into your database using <b>forms</b> (to retrieve and validate the query path parameters before constructing the request to bungin), and  <b>model-specific serializers</b> from the <a href = "http://www.django-rest-framework.org/">django rest framework (DRF)</a> to validate and save retrieved data to the database. This project borrows heavily from the tutorial <a href = "https://ultimatedjango.com/blog/how-to-consume-rest-apis-with-django-python-reques/">How to consume REST APIs with Django and Python requests.</a>
+    </p>
+
+
+  <p>A few benefits of using forms and serializers to handle new data:
+    <ol>
+        <li><b>Portability.</b> When you use the built-in django methods for validating/saving to a database, it will work no matter what kind of db you have configered (sqlite, postgres, etc). You can avoid fighting directly with your database, as the django front-end abstracts away from such details.</li>
+
+        <li><b>It just works.</b> No need to roll your own database. Django does it for you if you pull data in through forms/serializers. In this app, we use the django rest framework serializer, which has a built-in <i>save()</i> method to push the model-shaped data to the database. It has some nice features too, like by default it only saves data for fields that have changed.</li>
+
+        <li><b>Built-in validation.</b> There are built-in methods for validating that the data in a form (<i>form.is_valid()</i>). We then use that data to construct the request to Bungie, and push the response from bungie through the DRF serializer, which adds a second layer of validation of the data to be placed in the database.</li>
+
+        <li><b>No more 'legacy' databases.</b> There is no need to figure out how to integrate a pre-existing database into your django project: <i>everything</i> is part of your django project! You don't have to: a) Create a database from scratch, b) Figure out how to translate the tables into a django model (usually using <i>inspectdb</i>), c) Figure out a way to gracefully update the project database when your data is modified. At the docs, they are clear that <a href = "https://docs.djangoproject.com/en/1.11/howto/legacy-databases/">Django is best suited for developing new applications</a> rather than trying to drag some previous database into the mix. </li>
+
+        <li><b>Code readability.</b> Because you are pulling in data using well-known modules, there is no mystery for readers of your code. People will understand it, and not have to struggle figuring out your database-specific idiosyncracies, wading through your home-brewed validation, etc.. </li>
+
+        <li><b>Security</b>. Because so many people work on these frameworks, and obsess about keeping their apps secure, there is much less room for foul play like injection attacks. You are relying on extremely well-vetted validation and save methods that everyone trusts. </li> 
+    </ol>
+
+    <p>Caveat: <b>There is no free lunch</b>. The cost of having all this integrated into the project is that you now have more complexity built into your django project (for instance, <i>utils.add_user</i>). You may also lose some of the modularity that you had when you rolled your own database. Frankly, these minor costs seems worth the above benefits. Django and DRF are extremely popular applications that have been through many design cycles in the Crucible, so I'd rather just lean on their validation and database-construction methods than cook my own.</p>
+
+  </p>
+
+
+
+
+{% endblock %}
