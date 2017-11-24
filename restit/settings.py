@@ -126,7 +126,7 @@ STATIC_URL = '/static/'
 
 #Static asset configuration [new from https://devcenter.heroku.com/articles/django-assets]
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static') #'staticfiles')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = (
         os.path.join(PROJECT_ROOT, 'static'),
         )
