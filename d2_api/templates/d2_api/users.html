@@ -1,16 +1,17 @@
 {% extends 'd2_api/base.html' %}
 
+{% block header %}
+  <h2>Users entered thus far</h2>
+{% endblock header %}
+
 {% block content %}
-
-<h3>Users entered thus far</h3>
-<ul>
-  {% for user in users %}
-    <li>
-      {{ user.display_name }} : {{ user.user_id }}
-    </li>
-  {% empty %}
-    <li>No members have been added yet.</li>
-  {% endfor %}
-</ul>
-
+  <ul>
+    {% for user in users %}
+      <li>
+        {{ user.display_name }} : {{ user.user_id }}
+      </li>
+    {% empty %}
+      <li>No members have been added yet.</li>
+    {% endfor %}
+  </ul>
 {% endblock %}

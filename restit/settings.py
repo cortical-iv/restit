@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
      #third party
-    'rest_framework',
+    'bootstrap3',
 
     #custom
     'd2_api'
@@ -119,6 +119,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+
+#Settings for django-bootstrap3
+BOOTSTRAP3 = {'include_jquery': True,
+            }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

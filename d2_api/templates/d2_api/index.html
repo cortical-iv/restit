@@ -1,25 +1,27 @@
 {% extends 'd2_api/base.html' %}
 
+{% block header %}
+<div class="jumbotron">
+  <h2>Restit</h2>
+  <p>
+    Using Django forms to consume data from a RESTful api
+  </p>
+</div>
+
+
+{% endblock header %}
+
 {% block content %}
-
-  <h3>Welcome to restit</h3>
-  <p>
-    A simple Django project to illustrate how to pull data from the RESTful <a href = "https://github.com/Bungie-net/api">Destiny 2 api</a> into your database using forms. This is strongly recommended in Two Scoops of Django. For instance in the section 'Validate All Incoming Data with Django Forms', they say:
-  </p>
-
-      <blockquote style="font-family: Courier, Monaco, monospace, sans-serif;">
-        Django's forms are a wonderful framework designed to validate Python dictionaries. While most of the time we use them to validate incoming HTTP requets containing POST, there is nothing limiting them to be used just in this manner...What's really nice about this practice is that rather than cooking up our own validation system for incoming data, we're using the well-proven data testing fremwork built into Django.
-    </blockquote>
-
-  <p>
-    The project, as mentioned above, is extremely simple: it simply shows how to 1) make a call to bungie, 2) extract user information, and then 3) bind this information to a form. To get the process started you need to enter the user's name on the <a href = "{% url 'd2_api:submit' %}">Submit user page</a>.
-  </p>
-  <hr>
 
   <h3>Why use forms?</h3>
   <p>
-   There are many benefits of using forms to handle new data:
+   Pulling data into your database using forms is considered part of django best practices. In Two Scoops of Django, in the section <i>Validate All Incoming Data with Django Forms</i>, they say:
+         <blockquote>
+           Django's forms are a wonderful framework designed to validate Python dictionaries. While most of the time we use them to validate incoming HTTP requets containing POST, there is nothing limiting them to be used just in this manner...What's really nice about this practice is that rather than cooking up our own validation system for incoming data, we're using the well-proven data testing fremwork built into Django.
+       </blockquote>
   </p>
+
+  <p>There are a few reasons using forms to build your database is useful:</p>
     <ol>
         <li><b>Portability.</b> When you use the built-in django methods for validating/saving to a database, it should work no matter what kind of db you have configered (sqlite, postgres, etc). Django's methods abstract away from such details.</li>
 
@@ -58,11 +60,12 @@
 </p>
 
 <pre>
-        user_data = {'display_name': player_search_response[0]['displayName'], 'user_id': player_search_response[0]['membershipId']}
-        submit_user_form = SubmitUser(user_data) #binding data to form
-        #Validate and save data
-        if submit_user_form.is_valid():
-            submit_user_form.save() #save data to database
+  user_data = {'display_name': player_search_response[0]['displayName'],\
+               'user_id': player_search_response[0]['membershipId']}
+  submit_user_form = SubmitUser(user_data) #binding data to form
+  #Validate and save data
+  if submit_user_form.is_valid():
+      submit_user_form.save() #save data to database
 </pre>
 
 <p>
@@ -72,7 +75,7 @@
 <hr>
 <h3>Forms irl</h3>
 <p>
-  This example is simplistic: you typically wouldn't have a user enter data by hand to get this process started (note the form for submitting the user's name is not the same as the one that includes all the user's information: it is just a trick to get things going). In real life you could get a list of user names from <a href = "https://bungie-net.github.io/multi/operation_get_GroupV2-GetMembersOfGroup.html">GetMembersOfGroup</a>, and then run something like the above on each member of that list. Then, to automate this update, you would use cron or celery.
+  This example is simplistic: you typically wouldn't have a user enter data by hand to get this process started (note the form for submitting the user's name is not the same as the one that includes all the user's information: it is just a trick to get things going). In real life you could get a list of user names from <a href = "https://bungie-net.github.io/multi/operation_get_GroupV2-GetMembersOfGroup.html">GetMembersOfGroup</a>, and then run something like the above on each member of that list. Then, to automate this update, use cron or celery.
 </p>
 
 

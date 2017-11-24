@@ -12,7 +12,7 @@ from .forms import SubmitUser
 #Set some parameters
 baseurl = 'https://bungie.net/Platform/Destiny2/'
 baseurl_groupv2 = 'https://bungie.net/Platform/GroupV2/'
-D2_KEY =  #  <YOUR API KEY HERE>   #
+D2_KEY =   '2c967fcb4299479aac4b5414dff5ee5e'  #  <YOUR API KEY HERE>   #
 
 #Define helper functions
 def search_destiny_player_url(user_name):

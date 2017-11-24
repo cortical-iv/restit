@@ -1,18 +1,25 @@
 {% extends 'd2_api/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+  <h2>Submit a new user</h2>
+{% endblock header %}
+
 
 {% block content %}
+  <p>Clicking the button sends a candidate name to the view, triggering the process of accessing bungie to extract data about the user and inserting this data into a form for capturing user data. Note the form below is simply to get data to start the process: it is not what is submitted to the database. Any messages about the status of a search will be shown below.</p>
 
-  <h3>Submit User Name</h3>
-  <p>Clicking the button sends the user_name to the view. Note if a user does not exist, or an error is thrown, there will be a message printed to stdout, and you will return to this page with their name in the character field. See <i>views.submit</i> for the code.</p>
-
-  <form action = "{% url 'd2_api:submit' %}" method = "POST">
+  <form action = "{% url 'd2_api:submit' %}" method = 'post' class="form">
     {% csrf_token %}
-    {{ submit_name_form }}
-    <button type = "submit">Add user</button>
+    {% bootstrap_form submit_name_form %}
+
+    {% buttons %}
+      <button type = 'submit' class="btn btn-primary">Add user</button>
+    {% endbuttons %}
   </form>
 
 <hr>
-<h4>Status</h4>
+<h3>Status</h3>
   {% if messages %}
       {% for message in messages %}
         {{message}}
