@@ -10,8 +10,15 @@ from django import forms
 from .models import User
 
 
+class SubmitUserName(forms.Form):
+    user_name = forms.CharField(max_length = 20)
+    fields = ['user_name']
+    labels = {'user_name': ''} #no label b/c button
+
+
 class SubmitUser(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['display_name']
-        labels = {'display_name': ''}  #no label because there's a button
+        fields = ['display_name', 'user_id']
+
+

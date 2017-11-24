@@ -14,14 +14,14 @@ then the function is X_url)
 """
 ##Imports
 import requests
-from .serializer import SearchPlayerSerializer
+from .forms import SubmitUser
 #from .models import User
 
 
 #Set some parameters
 baseurl = 'https://bungie.net/Platform/Destiny2/'
 baseurl_groupv2 = 'https://bungie.net/Platform/GroupV2/'
-D2_KEY =  #  <YOUR API KEY HERE>  #
+D2_KEY = '2c967fcb4299479aac4b5414dff5ee5e'    #  <YOUR API KEY HERE>   #
 
 def search_destiny_player_url(user_name):
     """Main point is typically to get the user's id from their username.
@@ -31,40 +31,37 @@ def search_destiny_player_url(user_name):
     return baseurl + 'SearchDestinyPlayer/2/' + user_name + '/'
 
 
-def add_user(save_user_form):
-    """Tries to add user from completed form
-    Returns 1 if successful, 0 if not, and None if that user is not a D2 player in PS4"""
-    add_result = {'flag': 0, 'message': ''}
-    if save_user_form.is_valid():
-        user_name = save_user_form.cleaned_data['display_name']
-        search_url = search_destiny_player_url(user_name)
-        search_response = requests.get(search_url, headers = {"X-API-Key": D2_KEY})
-        user_data = search_response.json()['Response'] #NB: this is a list
-        if user_data:
-            submission_data = {'display_name': user_data[0]['displayName'], 'user_id': user_data[0]['membershipId']}
-            #print(repr(serializer))  #for debugging
-            try:
-                serializer = SearchPlayerSerializer(data =  submission_data)
-                if serializer.is_valid():
-                    serializer.save() #save data to database
-                    add_result['flag'] = 1
-                    add_result['message'] = 'Successfully added {0}'.format(user_name)
-                else:
-                    msg = "Invalid serializer. serializer.errors: {0}".format(serializer.errors)
-                    add_result['message'] = msg
-
-            except Exception as e:
-                msg = "Exception using serializer: {0}. Exception type: {1}.".format(e, e.__class__.__name__)
-                add_result['message'] = msg
-
+def add_user(user_name):
+    """
+    Validate form data containing 'display_name', request their info from server,
+    and pull in via a serializer. Returns dictionary, add_user_results, with two keys:
+        'flag': 1 if successful, 0 if not, and None if that user is not a D2 player in PS4.
+        'message': message about the outcome (success, validation error, etc).
+    """
+    add_user_results = {'flag': 0, 'message': ''}
+    search_url = search_destiny_player_url(user_name)
+    player_search_request = requests.get(search_url, headers = {"X-API-Key": D2_KEY})
+    player_search_response = player_search_request.json()['Response']
+    print(player_search_response)
+    if player_search_response:
+        #Create dictionary of data and bind it to the SubmitUser form.
+        user_data = {'display_name': player_search_response[0]['displayName'], \
+                     'user_id': player_search_response[0]['membershipId']}
+        submit_user_form = SubmitUser(user_data)
+        #Validate and save data
+        if submit_user_form.is_valid():
+            submit_user_form.save() #save data to database
+            add_user_results['flag'] = 1
+            add_user_results['message'] = 'Successfully added {0}'.format(user_name)
         else:
-            msg = "'{0}' is not a Destiny2 player on PS4".format(user_name)
-            add_result['message'] = msg
-    else:  #not valid
-        msg = "save_user_form not valid. error: {0}".format(save_user_form.errors)
-        add_result['message'] = msg
+            msg = "Invalid submit_user_form. form.errors: {0}".format(submit_user_form.errors)
+            add_user_results['message'] = msg
+    else:
+        msg = "'{0}' is not a Destiny2 player on PS4".format(user_name)
+        add_user_results['message'] = msg
 
-    return add_result
+
+    return add_user_results
 
 
 

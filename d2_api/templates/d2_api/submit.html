@@ -1,0 +1,15 @@
+{% extends 'd2_api/base.html' %}
+
+{% block content %}
+
+  <h3>Manual data entry and submission</h3>
+  <p>Clicking the button sends the user_name to the view. Note if a user does not exist, or an error is thrown, there will be a message printed to stdout, and you will return to this page with their name in the character field. See <i>views.submit</i> for the code.</p>
+
+  <form action = "{% url 'd2_api:submit' %}" method = "POST">
+    {% csrf_token %}
+    {{ submit_name_form }}
+    <button type = "submit">Add user</button>
+  </form>
+
+
+{% endblock %}
