@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  <h3>Manual data entry and submission</h3>
+  <h3>Submit User Name</h3>
   <p>Clicking the button sends the user_name to the view. Note if a user does not exist, or an error is thrown, there will be a message printed to stdout, and you will return to this page with their name in the character field. See <i>views.submit</i> for the code.</p>
 
   <form action = "{% url 'd2_api:submit' %}" method = "POST">
@@ -11,5 +11,14 @@
     <button type = "submit">Add user</button>
   </form>
 
+<hr>
+<h4>Results:</h4>
+  {% if messages %}
+      {% for message in messages %}
+        {{message}}
+      {% endfor %}
+  {% else %}
+    <small><i>Waiting for username.</i></small>
+  {% endif %}
 
 {% endblock %}

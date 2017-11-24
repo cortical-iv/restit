@@ -14,7 +14,7 @@
   <p>
     The project, as mentioned above, is extremely simple: it simply shows how to 1) make a call to bungie, 2) extract user information, and then 3) bind this information to a form. To get the process started you need to enter the user's name on the <a href = "{% url 'd2_api:submit' %}">Submit user page</a>.
   </p>
-
+  <hr>
 
   <h3>Why use forms?</h3>
   <p>
@@ -36,6 +36,7 @@
     Caveat: <i>There is no free lunch</i>. The cost of having all this integrated into the project is that your project will be more complicated than if you just yank in a database made elsewhere. You may also lose some of the modularity gained from rolling your own database in a standalone module. Frankly, these minor costs seems worth the above benefits. Django is an extremely popular framework that has been through many design cycles in the Crucible, so I'd rather just lean on their  methods than cook my own.
   </p>
 
+<hr>
 <h3>How to?</h3>
 <p>
   When you submit a user-name, it will trigger the request at Bungie for that player's information. If the user exists, a helper function (<i>utils.save_user()</i>)  binds the data to a form that represents the User model class (forms.SubmitUser), and then adds that data to the database if the data are valid.
@@ -68,6 +69,7 @@
   After getting data from the api, you fill a dictionary that corresponds to the fields of the model and put it in <i>user_data</i>, and then bind this data to the form in the second line. Finally, you use the built-in validation and save methods. That's it! You have pulled in your data via a form by feeding it a dictionary with the required data. Once the form is bound with the data, it doesn't matter how it got bound: you are now free to use the standard set of procedures as usual.
 </p>
 
+<hr>
 <h3>Forms irl</h3>
 <p>
   This example is simplistic: you typically wouldn't have a user enter data by hand to get this process started (note the form for submitting the user's name is not the same as the one that includes all the user's information: it is just a trick to get things going). In real life you could get a list of user names from <a href = "https://bungie-net.github.io/multi/operation_get_GroupV2-GetMembersOfGroup.html">GetMembersOfGroup</a>, and then run something like the above on each member of that list. Then, to automate this update, you would use cron or celery.

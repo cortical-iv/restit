@@ -1,16 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Hook for interacting with d2 api
-"""
-
-"""
-URL GENERATORS
-The following functions create urls in the format that the bungie servers want them.
-In the docs for each function I give the url to bungie docs, partly to help but also so
-you can see what I may have left out --- I'm not always including all possible query strings.
-I named each url generator according to the bungie end point (e.g., if the end point is X
-then the function is X_url)
+Utilities for restit/d2_api app.
 """
 ##Imports
 import requests
@@ -23,6 +14,7 @@ baseurl = 'https://bungie.net/Platform/Destiny2/'
 baseurl_groupv2 = 'https://bungie.net/Platform/GroupV2/'
 D2_KEY = '2c967fcb4299479aac4b5414dff5ee5e'    #  <YOUR API KEY HERE>   #
 
+#Define helper functions
 def search_destiny_player_url(user_name):
     """Main point is typically to get the user's id from their username.
         https://bungie-net.github.io/multi/operation_get_Destiny2-SearchDestinyPlayer.html
@@ -54,7 +46,8 @@ def add_user(user_name):
             add_user_results['flag'] = 1
             add_user_results['message'] = 'Successfully added {0}'.format(user_name)
         else:
-            msg = "Invalid submit_user_form. form.errors: {0}".format(submit_user_form.errors)
+            msg = submit_user_form.errors
+            print(msg)
             add_user_results['message'] = msg
     else:
         msg = "'{0}' is not a Destiny2 player on PS4".format(user_name)

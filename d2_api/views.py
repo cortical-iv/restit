@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib import messages
 
 from .forms import SubmitUserName
 from .models import User
@@ -21,12 +22,16 @@ def submit(request):
         if submit_name_form.is_valid():
             user_name = submit_name_form.cleaned_data['user_name']
             save_outcome = add_user(user_name)
-            print(save_outcome['message'])
+            msg = save_outcome['message']
             if save_outcome['flag'] == 1:
+                messages.success(request, msg)
                 return HttpResponseRedirect(reverse('d2_api:submit'))
+            else:
+                messages.warning(request, msg)
         else:  #not valid
-            msg = "No valid data in submit_name_form. error: {0}".format(submit_name_form.errors)
-            print(msg)
+            msg =  submit_name_form.errors
+            messages.warning(request, msg)
+            submit_name_form = SubmitUserName()
     else:  #if GET request just show empty form
         submit_name_form = SubmitUserName()
 
