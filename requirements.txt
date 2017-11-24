@@ -5,6 +5,7 @@ chardet==3.0.4
 dj-database-url==0.4.2
 dj-static==0.0.6
 Django==1.11.7
+django-bootstrap3==9.1.0
 djangorestframework==3.7.3
 gunicorn==19.7.1
 idna==2.6
@@ -14,4 +15,3 @@ requests==2.18.4
 static3==0.7.0
 urllib3==1.22
 vine==1.1.4
-psycopg2>=2.6.1
