@@ -9,6 +9,8 @@ Tested on Ubuntu 16.04 using Python 3.6.
 1. Build version with something more realistic/complex that changes daily, and automate it with something like cron.
 2. Improve messaging. I followed this for the basics:    
 https://simpleisbetterthancomplex.com/tips/2016/09/06/django-tip-14-messages-framework.html
+3. Not sure why field label is showing up:
+https://www.reddit.com/r/django/comments/7fakjq/using_bootstrap3_i_want_no_label_on_form_element/
 
 #### Note
 In a full-fledged project, you will want to update, not just add, new rows. [The docs say](https://docs.djangoproject.com/en/1.11/topics/forms/modelforms/#the-save-method):
