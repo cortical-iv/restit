@@ -12,8 +12,7 @@ https://www.reddit.com/r/django/comments/7fakjq/using_bootstrap3_i_want_no_label
 
 #### Note
 In a full-fledged project, you will want to update, not just add, new rows. [The docs say](https://docs.djangoproject.com/en/1.11/topics/forms/modelforms/#the-save-method):    
-
-    > Every ModelForm also has a save() method. This method creates and saves a database object from the data bound to the form. A subclass of ModelForm can accept an existing model instance as the keyword argument instance; if this is supplied, save() will update that instance. If it’s not supplied, save() will create a new instance of the specified model
+> Every ModelForm also has a save() method. This method creates and saves a database object from the data bound to the form. A subclass of ModelForm can accept an existing model instance as the keyword argument instance; if this is supplied, save() will update that instance. If it’s not supplied, save() will create a new instance of the specified model
 
 #### Acknowledgments
 Initial version of restit was based on https://ultimatedjango.com/blog/how-to-consume-rest-apis-with-django-python-reques/.
