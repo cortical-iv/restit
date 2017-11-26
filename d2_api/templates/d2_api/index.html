@@ -12,6 +12,7 @@
 {% endblock header %}
 
 {% block content %}
+  A simple example of how to use forms to pull data from the Destiny 2 api into a django project. To submit a username, which initiates the process, go to <a href = "{% url 'd2_api:submit' %}">Submit page</a>. The list of all users in the database is on the <a href ="{% url 'd2_api:users' %}">User's page</a>. Source code is at <a href = "https://github.com/cortical-iv/restit">Github</a>. Note right now it is just pulling data from PS4 users.
 
   <h3>Why use forms?</h3>
   <p>
@@ -27,11 +28,14 @@
 
         <li><b>Great built-ins.</b> There are excellent built-in methods for validating the data in a form (<i>form.is_valid()</i>), and saving it to your database (<i>form.save())</i>). The validation method returns pre-formatted error messages if it doesn't work. This relieves you of having to maintain complex validation code.</li>
 
-        <li><b>No more 'legacy' databases.</b> There is no need to figure out how to integrate a pre-existing database into your django project: <i>everything</i> is part of your django project from the start. No more wrangling with <i>inspectdb</i> or <a href = "https://docs.djangoproject.com/en/1.11/howto/legacy-databases/">other tricks</a>).
-
         <li><b>Code simplicity and readability.</b> Because you are pulling in data using well-known modules, there is no mystery for folks about how to build the database.</li>
 
         <li><b>Security</b>. Because so many people work on these frameworks and obsess about keeping their apps secure, there is much less room for foul play like injection attacks. You are relying on extremely well-vetted methods when interacting with your database.</li>
+
+        <li><b>No more fighting with 'legacy' databases.</b> There is no need to figure out how to integrate a pre-existing database into your django project: <i>everything</i> is part of your django project from the start. No more wrangling with <i>inspectdb</i> (or <a href = "https://docs.djangoproject.com/en/1.11/howto/legacy-databases/">other tricks</a>). The book Django Unleashed says:
+          <blockquote>
+            Developers should not start a project by defining a database schema and then trying to mirror their schema in Django. This goes against the Django philosopohy: don't fight the framework! Start with an outline of your desired data, create it declaratively in Django, and then let Django do the work of creating a database.
+          </blockquote></li>
     </ol>
 
     <p>

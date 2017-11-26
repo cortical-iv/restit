@@ -1,13 +1,13 @@
 # restit
-Example of how to use forms to help pull data from api requests into a Django database. In this case, we are pulling data from the [Destiny 2 api](https://github.com/Bungie-net/api). For this to work you need an api key from Destiny2, which is contained in `/d2_api/utils.py` as `D2_KEY`.
+A simple example of how to use forms to pull data from a RESTful api into a django project. In this case, we are pulling data from the [Destiny 2 api](https://github.com/Bungie-net/api). For this to work you need an api key from Destiny2, which is contained in `/d2_api/utils.py` as `D2_KEY`.
 
 Tested on Ubuntu 16.04 using Python 3.6.
 
 ### To do
-1. Build version with something more realistic/complex that changes daily, and automate it with something like cron.
+1. Build version with something more realistic/complex that changes daily (SVM).
 2. Improve messaging. I followed this for the basics:    
 https://simpleisbetterthancomplex.com/tips/2016/09/06/django-tip-14-messages-framework.html
-3. Not sure why field label is showing up:
+3. Not sure why field label is showing up for user submit form:
 https://www.reddit.com/r/django/comments/7fakjq/using_bootstrap3_i_want_no_label_on_form_element/
 
 #### Note
