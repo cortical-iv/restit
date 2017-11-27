@@ -10,8 +10,7 @@ http://restit.herokuapp.com
 https://simpleisbetterthancomplex.com/tips/2016/09/06/django-tip-14-messages-framework.html
 3. Not sure why field label is showing up for user submit form:
 https://www.reddit.com/r/django/comments/7fakjq/using_bootstrap3_i_want_no_label_on_form_element/
-4. Better way to handle api key this is unworkable.
-5. Staticfiles what the fuck? Read chapter 16 about this, put in notes. Add some images to restit.
+4. Staticfiles read chapter 16 about this, put in notes. Add some images to restit. Also why do I have a 'static' folder and also a 'staticfiles' folder? WTF did I do wrong? Fix that it seems a mistake.
 
 #### Notes
 ###### 1. Secret stuff
