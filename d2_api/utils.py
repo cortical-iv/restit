@@ -5,14 +5,15 @@ Utilities for restit/d2_api app.
 """
 ##Imports
 import requests
+from django.conf import settings  #maybe this will work?
 from .forms import SubmitUser
-#from .models import User
 
+D2_KEY = settings.D2_KEY
+#print("D2_KEY: {}".format(D2_KEY)) #for debugging if it wasn't incorporated into settings.
 
 #Set some parameters
 baseurl = 'https://bungie.net/Platform/Destiny2/'
 baseurl_groupv2 = 'https://bungie.net/Platform/GroupV2/'
-D2_KEY =    '2c967fcb4299479aac4b5414dff5ee5e'  #  <YOUR API KEY HERE>   #
 
 #Define helper functions
 def search_destiny_player_url(user_name):
@@ -30,6 +31,7 @@ def add_user(user_name):
         'flag': 1 if successful, 0 if not, and None if that user is not a D2 player in PS4.
         'message': message about the outcome (success, validation error, etc).
     """
+    print("\n\n\n***Key: {}".format(D2_KEY))
     add_user_results = {'flag': 0, 'message': ''}
     search_url = search_destiny_player_url(user_name)
     player_search_request = requests.get(search_url, headers = {"X-API-Key": D2_KEY})

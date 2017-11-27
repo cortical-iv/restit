@@ -1,9 +1,6 @@
 #import requests
 from django.db import models
 
-#from .utils import search_destiny_player_url, D2_KEY
-#from .serializer import SearchPlayerSerializer
-
 
 class User(models.Model):
     """Model for the user object: display_name and user_id are unique together."""

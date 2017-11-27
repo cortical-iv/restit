@@ -11,6 +11,23 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from django.core.exceptions import ImproperlyConfigured
+
+def get_env_variable(var_name):
+    """get environmental variable, or return exception
+    Taken from Section 5.3.5 Two Scoops"""
+    print("Looking for {}".format(var_name))
+    try:
+        print(os.environ.get(var_name))
+        return os.environ.get(var_name)
+    except KeyError:
+        error_msg = 'get_env_variable error: Set the {} environment variable'.format(var_name)
+        raise ImproperlyConfigured(error_msg)
+
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = get_env_variable('SECRET_KEY') #8i$9r!i5^jvxwtwx85b4dg*=0is6toi^9k_r7z3yao88x^p5q4' # get_env_variable('SECRET_KEY')  #'8i$9r!i5^jvxwtwx85b4dg*=0is6toi^9k_r7z3yao88x^p5q4'
+D2_KEY =  get_env_variable('D2_KEY') # '2c967fcb4299479aac4b5414dff5ee5e' #
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,12 +36,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8i$9r!i5^jvxwtwx85b4dg*=0is6toi^9k_r7z3yao88x^p5q4'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
