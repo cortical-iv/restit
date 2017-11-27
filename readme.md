@@ -13,7 +13,7 @@ https://www.reddit.com/r/django/comments/7fakjq/using_bootstrap3_i_want_no_label
 4. Staticfiles read chapter 16 about this, put in notes. Add some images to restit. Also why do I have a 'static' folder and also a 'staticfiles' folder? WTF did I do wrong? Fix that it seems a mistake.
 
 #### Notes
-###### 1. Secret stuff
+##### 1. Secret stuff
 The Django SECRET_KEY and the Destiny 2 api-key (D2_KEY) need to be kept secret. As is common practice, and recommended in Two Scoops of Django (Section 5.3), for `restit` we are storing the secrets as environment variables. To set them locally (in Linux) just use:  
 
     export SECRET_KEY=*secret key value*    
@@ -48,7 +48,7 @@ On Heroku things are much simpler:
     heroku config:set D2_KEY=*your d2 api key value*    
 And things should just work.
 
-###### 2. **Saving versus updating the db**    
+##### 2. **Saving versus updating the db**    
 In a full-fledged project, you will want to update, not just add, new rows. [The docs say](https://docs.djangoproject.com/en/1.11/topics/forms/modelforms/#the-save-method):    
 > Every ModelForm also has a save() method. This method creates and saves a database object from the data bound to the form. A subclass of ModelForm can accept an existing model instance as the keyword argument instance; if this is supplied, save() will update that instance. If it’s not supplied, save() will create a new instance of the specified model    
 
