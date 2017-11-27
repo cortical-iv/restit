@@ -9,7 +9,7 @@ from django.conf import settings  #maybe this will work?
 from .forms import SubmitUser
 
 D2_KEY = settings.D2_KEY
-#print("D2_KEY: {}".format(D2_KEY)) #for debugging if it wasn't incorporated into settings.
+#print("D2_KEY: {}".format(D2_KEY)) #for debugging if it isn't working
 
 #Set some parameters
 baseurl = 'https://bungie.net/Platform/Destiny2/'

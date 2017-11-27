@@ -43,6 +43,12 @@ Then when you activate the virtual environment, the relevant variables will be s
 
 The D2_KEY is read in in restit/settings.py (the helper function `get_env_variable`), and can be imported elsewhere in the project with `from django.conf import settings` and then accessed with `settings.D2_KEY` (as in `/d2_api/utils.py`)
 
+On Heroku things are much simpler:    
+
+    heroku config:set SECRET_KEY=*secret key value*
+    heroku config:set D2_KEY=*your d2 api key value*
+And things should just work.
+
 ###### 2. **Saving versus updating the db**    
 In a full-fledged project, you will want to update, not just add, new rows. [The docs say](https://docs.djangoproject.com/en/1.11/topics/forms/modelforms/#the-save-method):    
 > Every ModelForm also has a save() method. This method creates and saves a database object from the data bound to the form. A subclass of ModelForm can accept an existing model instance as the keyword argument instance; if this is supplied, save() will update that instance. If it’s not supplied, save() will create a new instance of the specified model

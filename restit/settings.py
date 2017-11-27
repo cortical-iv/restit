@@ -26,8 +26,8 @@ def get_env_variable(var_name):
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_variable('SECRET_KEY') #8i$9r!i5^jvxwtwx85b4dg*=0is6toi^9k_r7z3yao88x^p5q4' # get_env_variable('SECRET_KEY')  #'8i$9r!i5^jvxwtwx85b4dg*=0is6toi^9k_r7z3yao88x^p5q4'
-D2_KEY =  get_env_variable('D2_KEY') # '2c967fcb4299479aac4b5414dff5ee5e' #
+SECRET_KEY = get_env_variable('SECRET_KEY')
+D2_KEY =  get_env_variable('D2_KEY')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
