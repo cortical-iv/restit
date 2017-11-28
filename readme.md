@@ -1,7 +1,7 @@
 # restit
-A simple example of how to use forms to pull data from a RESTful api into a django project. In this case, we are pulling data from the [Destiny 2 api](https://github.com/Bungie-net/api). For this to work you need an api key from Destiny2, which is contained in `/d2_api/utils.py` as `D2_KEY`.
+A simple example of how to use forms to pull data from a RESTful api into a django project. In this case, we are pulling data from the [Destiny 2 api](https://github.com/Bungie-net/api). For this to work you need an api key from Destiny2, which is assumed to be in your environment variables (see discussion 'Secret Stuff' below).
 
-Tested on Ubuntu 16.04 using Python 3.6, and at Heroku. For a working deployment, see:    
+Tested locally on Ubuntu 16.04/Python 3.6, and remotely at Heroku. For a working deployment, see:    
 http://restit.herokuapp.com
 
 ### To do

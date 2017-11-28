@@ -16,9 +16,7 @@ from django.core.exceptions import ImproperlyConfigured
 def get_env_variable(var_name):
     """get environmental variable, or return exception
     Taken from Section 5.3.5 Two Scoops"""
-    print("Looking for {}".format(var_name))
     try:
-        print(os.environ.get(var_name))
         return os.environ.get(var_name)
     except KeyError:
         error_msg = 'get_env_variable error: Set the {} environment variable'.format(var_name)
@@ -146,7 +144,7 @@ STATIC_URL = '/static/'
 
 #Static asset configuration [new from https://devcenter.heroku.com/articles/django-assets]
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')  #'staticfiles'
 STATICFILES_DIRS = (
         os.path.join(PROJECT_ROOT, 'static'),
         )
@@ -161,6 +159,6 @@ if cwd == '/app' or cwd[:4] == '/tmp':
     SECURE_PROXY_SSL_HEADER = {'HTTP_X_FORWARDED_PROTO', 'https'}
 
     #Allow only Heroku to host the project
-    ALLOWED_HOSTS =  ['*'] #['tell-jeeves.herokuapp.com']
+    ALLOWED_HOSTS =  ['restit.herokuapp.com'] #['tell-jeeves.herokuapp.com']
     DEBUG = False
 
