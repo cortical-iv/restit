@@ -1,4 +1,5 @@
 {% extends 'd2_api/base.html' %}
+{% load static %}
 
 {% block header %}
 <div class="jumbotron">
@@ -15,6 +16,9 @@
   A simple example of how to use forms to pull data from the Destiny 2 api into a django project. To submit a username, which initiates the process, go to <a href = "{% url 'd2_api:submit' %}">Submit page</a>. The list of all users in the database is on the <a href ="{% url 'd2_api:users' %}">User's page</a>. Source code is at <a href = "https://github.com/cortical-iv/restit">Github</a>. Note right now it is just pulling data from PS4 users.
 
   <h3>Why use forms?</h3>
+  <a href = "https://www.twoscoopspress.com/products/two-scoops-of-django-1-11" target="_blank">
+   <img src = "{% static 'images/twoscoops.png' %}" style="width:207px; height:256px;float:right">
+ </a>
   <p>
    Pulling data into your database using forms is considered part of django best practices. In Two Scoops of Django, in the section <i>Validate All Incoming Data with Django Forms</i>, they say:
          <blockquote>
