@@ -1,16 +1,16 @@
 # restit
-A simple example of how to use forms to pull data from a RESTful api into a django project. In this case, we are pulling data from the [Destiny 2 api](https://github.com/Bungie-net/api). For this to work you need an api key from Destiny2, which is assumed to be in your environment variables (see discussion 'Secret Stuff' below).
+A simple example of how to use forms to pull data from a RESTful api into a django project. In this case, we are pulling data from the [Destiny 2 api](https://github.com/Bungie-net/api). For this to work you need an api key from Destiny2, which is assumed to be in your environment variables (see  'Secret Stuff' discussion below).
 
 Tested locally on Ubuntu 16.04/Python 3.6, and remotely at Heroku. For a working deployment, see:    
 http://restit.herokuapp.com
 
 ### To do
 1. Build version with something more realistic/complex that changes daily (SVM).
-2. Improve messaging. I followed this for the basics:    
+2. Improve status message formatting. I followed this for the basics:    
 https://simpleisbetterthancomplex.com/tips/2016/09/06/django-tip-14-messages-framework.html
 3. Not sure why field label is showing up for user submit form:
 https://www.reddit.com/r/django/comments/7fakjq/using_bootstrap3_i_want_no_label_on_form_element/
-4. Staticfiles read chapter 16 about this, put in notes. Add some images to restit. Also why do I have a 'static' folder and also a 'staticfiles' folder? WTF did I do wrong? Fix that it seems a mistake.
+
 
 #### Notes
 ##### 1. Secret stuff
