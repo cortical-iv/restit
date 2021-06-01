@@ -13,6 +13,6 @@ kombu==4.1.0
 pytz==2017.3
 requests==2.18.4
 static3==0.7.0
-urllib3==1.22
+urllib3==1.26.5
 vine==1.1.4
 psycopg2>2.6.1
